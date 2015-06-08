@@ -18,7 +18,8 @@ describe('ESLint Rule', function() {
   it('reports warning when module is not capitalized', function(done) {
     var code = [
       'var hapi = require("hapi");',
-      'var poop; poop = require("poop");'
+      'var poop; poop = require("poop");',
+      'var foo = {bar: function() { var hapi = require("hapi"); }};'
     ];
 
     linterConfig.rules[HapiCapitalizeModules.esLintRuleName] = 1;
@@ -39,7 +40,8 @@ describe('ESLint Rule', function() {
   it('does not report anything if module variable is capitalized', function(done) {
     var code = [
       'var Hapi = require("hapi");',
-      'var Poop; Poop = require("poop");'
+      'var Poop; Poop = require("poop");',
+      'Code = require("code");'
     ];
 
     linterConfig.rules[HapiCapitalizeModules.esLintRuleName] = 1;
@@ -49,6 +51,40 @@ describe('ESLint Rule', function() {
 
       expect(result).to.be.an.array();
       expect(result.length).to.equal(0);
+    }
+
+    done();
+  });
+
+  it('only warns on globals when global-scope-only is set', function(done) {
+    var code = [
+      'function foo() { var hapi = require("hapi"); }',
+      'var foo = function() { var hapi = require("hapi"); }',
+      'var foo = {bar: function() { hapi = require("hapi"); }};'
+    ];
+
+    linterConfig.rules[HapiCapitalizeModules.esLintRuleName] = [1, 'global-scope-only'];
+
+    for (var i = 0; i < code.length; ++i) {
+      var result = linter.verify(code[i], linterConfig);
+
+      expect(result).to.be.an.array();
+      expect(result.length).to.equal(0);
+    }
+
+    code = [
+      'hapi = require("hapi");',
+      'var poop; poop = require("poop");'
+    ];
+
+    for (var i = 0; i < code.length; ++i) {
+      var result = linter.verify(code[i], linterConfig);
+
+      expect(result).to.be.an.array();
+      expect(result.length).to.equal(1);
+      expect(result[0].ruleId).to.equal(HapiCapitalizeModules.esLintRuleName);
+      expect(result[0].message).to.equal('Imported module variable name not capitalized.');
+      expect(result[0].nodeType).to.match(/VariableDeclarator|AssignmentExpression/);
     }
 
     done();
