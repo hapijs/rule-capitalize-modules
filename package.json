@@ -1,10 +1,10 @@
 {
   "name": "hapi-capitalize-modules",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "ESLint rule to enforce the capitalization of imported module variables",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node node_modules/.bin/lab -v -t 100 -a code"
+    "test": "lab -v -t 100 -a code"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "eslintrule",
     "require"
   ],
-  "author": "Continuation Labs",
+  "author": "Continuation Labs <contact@continuation.io> (http://continuation.io/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/continuationlabs/hapi-capitalize-modules/issues"
