@@ -61,7 +61,6 @@ describe('ESLint Rule', function () {
       'var poop; poop = require("poop");'
     ];
 
-
     ruleTester.run(HapiCapitalizeModules.esLintRuleName, HapiCapitalizeModules, {
       valid: valid.map(function (code) {
         return {
@@ -72,6 +71,27 @@ describe('ESLint Rule', function () {
       invalid: invalid.map(function (code) {
         return {
           code: code,
+          options: ['global-scope-only'],
+          errors: [{message: 'Imported module variable name not capitalized.'}]
+        };
+      })
+    });
+    done();
+  });
+
+  it('global-scope-only works in the presense of ES6 modules', function (done) {
+    var ruleTester = new RuleTester();
+    var invalid = [
+      'hapi = require("hapi");',
+      'var poop; poop = require("poop");'
+    ];
+
+    ruleTester.run(HapiCapitalizeModules.esLintRuleName, HapiCapitalizeModules, {
+      valid: [],
+      invalid: invalid.map(function (code) {
+        return {
+          code: code,
+          ecmaFeatures: {modules: true},
           options: ['global-scope-only'],
           errors: [{message: 'Imported module variable name not capitalized.'}]
         };
