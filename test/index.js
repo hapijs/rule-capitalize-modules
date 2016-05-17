@@ -110,14 +110,15 @@ describe('ESLint Rule', function () {
       'foo[bar] = 5;',
       'this.foo = null;',
       '[foo, bar] = [1, 2];',
-      '[foo, bar] = require("baz");'
+      '[foo, bar] = require("baz");',
+      'const {foo} = require("bar");'
     ];
 
     ruleTester.run(HapiCapitalizeModules.esLintRuleName, HapiCapitalizeModules, {
       valid: code.map(function (code) {
         return {
           code: code,
-          ecmaFeatures: {destructuring: true}
+          parserOptions: {ecmaVersion: 6}
         };
       }),
       invalid: []
