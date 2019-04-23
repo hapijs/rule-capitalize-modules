@@ -1,8 +1,8 @@
-# hapi-capitalize-modules
+<a href="http://hapijs.com"><img src="https://github.com/hapijs/assets/blob/master/images/family.svg" width="180px" align="right" /></a>
 
-[![Current Version](https://img.shields.io/npm/v/hapi-capitalize-modules.svg)](https://www.npmjs.org/package/hapi-capitalize-modules)
-[![Build Status via Travis CI](https://travis-ci.org/continuationlabs/hapi-capitalize-modules.svg?branch=master)](https://travis-ci.org/continuationlabs/hapi-capitalize-modules)
-![Dependencies](http://img.shields.io/david/continuationlabs/hapi-capitalize-modules.svg)
+# rule-capitalize-modules
+
+[![Build Status](https://travis-ci.org/hapijs/rule-capitalize-modules.svg?branch=master)](https://travis-ci.org/hapijs/rule-capitalize-modules)
 
 ESLint rule to enforce the capitalization of imported module variables.
 

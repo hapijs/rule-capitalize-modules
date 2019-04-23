@@ -1,35 +1,23 @@
 {
-  "name": "hapi-capitalize-modules",
+  "name": "@hapi/rule-capitalize-modules",
   "version": "1.1.6",
   "description": "ESLint rule to enforce the capitalization of imported module variables",
   "main": "lib/index.js",
-  "scripts": {
-    "test": "belly-button && lab -v -t 100 -a code"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/continuationlabs/hapi-capitalize-modules.git"
-  },
+  "repository": "https://github.com/hapijs/rule-capitalize-modules.git",
   "keywords": [
     "eslint",
     "hapi",
     "eslintrule",
     "require"
   ],
-  "author": "Continuation Labs <contact@continuation.io> (http://continuation.io/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/continuationlabs/hapi-capitalize-modules/issues"
-  },
-  "directories": {
-    "test": "test"
-  },
   "dependencies": {},
   "devDependencies": {
-    "belly-button": "2.x.x",
-    "code": "2.x.x",
-    "eslint": "2.x.x",
-    "lab": "10.x.x"
+    "@hapi/code": "5.x.x",
+    "@hapi/lab": "18.x.x",
+    "eslint": "5.x.x"
   },
-  "homepage": "https://github.com/continuationlabs/hapi-capitalize-modules#readme"
+  "scripts": {
+    "test": "lab -t 100 -a @hapi/code -L"
+  },
+  "license": "BSD-3-Clause"
 }
