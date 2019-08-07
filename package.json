@@ -1,6 +1,6 @@
 {
   "name": "@hapi/rule-capitalize-modules",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "ESLint rule to enforce the capitalization of imported module variables",
   "main": "lib/index.js",
   "repository": "https://github.com/hapijs/rule-capitalize-modules.git",
